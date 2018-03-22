@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="schedule-console" version="3.0">
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/classes/config/db.xml
+			/WEB-INF/classes/config/applicationContext.xml
+			/WEB-INF/classes/config/sysConfig.xml
+		</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>com.mytools.listeners.StartUpMyTagServer</listener-class>
+	</listener>
+	
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				/WEB-INF/classes/config/controller.xml
+			</param-value>
+		</init-param>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>urlFilter</filter-name>
+		<filter-class>com.myreport.filters.UrlFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>urlFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>urlFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+
+	<welcome-file-list>
+		<welcome-file>/jsp/login.jsp</welcome-file>
+	</welcome-file-list>
+	<session-config>
+		<session-timeout>120</session-timeout>
+	</session-config>
+</web-app>
+

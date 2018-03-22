@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+	http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
+	<bean id="sysConfig" class="com.myreport.configs.SysConfig" init-method="init" destroy-method="destroy">
+		<!-- 一级免过滤列表 -->
+		<property name="firstNoFilterList">
+			<list>
+				<value>login.jsp</value>
+				<value>logout.jsp</value>
+				<value>checkCode.jsp</value>
+				<value>login.do</value>
+				<value>noPurview.jsp</value>
+				<value>timeout.jsp</value>
+				<value>includeJquery.jsp</value>
+				<value>pwdPanel.jsp</value>
+				<value>modifyPwd.do</value>
+			</list>
+		</property>
+		<!-- 二级免过滤列表 -->
+		<property name="secondNoFilterList">
+			<list>
+				<value>index.jsp</value>
+				<value>homePage.jsp</value>
+				<value>leftMenu.jsp</value>
+				<value>giveRight.jsp</value>
+				<value>noFilter.do</value>
+				<value>leftTree.jsp</value>
+				<value>queryUserSessionMenu.do</value>
+				<value>queryAllRegion.do</value>
+				<value>queryUserReportGroup.do</value>
+				<value>queryReportByReportGroupId.do</value>
+				<value>queryReportInfoById.do</value>
+				<value>reportInfoList4Index.jsp</value>
+				<value>queryDataListForReport.do</value>
+				<value>reportInfoParamEdit.jsp</value>
+				<value>queryChart.do</value>
+				<value>createExcel.do</value>
+				<value>downData.jsp</value>
+				<value>getDownData.do</value>
+			</list>
+		</property>
+		<!-- 超级管理员 -->
+		<property name="superManagerList">
+			<list>
+				<value>admin</value>
+			</list>
+		</property>
+		<property name="checkPwd" value="false" />
+	</bean>
+</beans>
+
